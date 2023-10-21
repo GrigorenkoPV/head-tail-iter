@@ -1,0 +1,20 @@
+[package]
+name = "head-tail-iter"
+authors = ["Pavel Grigorenko <grigorenkopv@ya.ru>"]
+
+description = "An iterator that repeatedly splits head & tail"
+
+version = "1.0.0"
+edition = "2015"
+rust-version = "1.54"
+
+readme = "README.md"
+homepage = "https://lib.rs/crates/head-tail-iter"
+documentation = "https://docs.rs/head-tail-iter/"
+repository = "https://github.com/GrigorenkoPV/head-tail-iter"
+
+license = "MIT OR Apache-2.0"
+
+keywords = ["iterator"]
+categories = ["no-std", "no-std::no-alloc", "rust-patterns"]
+exclude = [".gitignore"]
