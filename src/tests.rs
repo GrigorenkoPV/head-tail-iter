@@ -2,12 +2,6 @@ use super::*;
 
 const EMPTY_SLICE: &[i32] = &[];
 
-#[inline(always)]
-// A workaround for .as_slice() being unstable in 1.56
-fn slice<T>(t: &[T]) -> &[T] {
-    t
-}
-
 #[test]
 fn size_hint_and_exact_size() {
     let size_hint = |n| (n, Some(n));
@@ -46,8 +40,8 @@ fn last() {
 fn nth() {
     let iter = || [1, 2, 3].head_tail_pairs();
     assert_eq!(iter().nth(0), iter().next());
-    assert_eq!(iter().nth(1), Some((&2, slice(&[3]))));
-    assert_eq!(iter().nth(2), Some((&3, slice(&[]))));
+    assert_eq!(iter().nth(1), Some((&2, &[3] as &[_])));
+    assert_eq!(iter().nth(2), Some((&3, &[] as &[_])));
     assert_eq!(iter().nth(3), None);
     assert_eq!(iter().nth(10), None);
 
@@ -60,8 +54,8 @@ fn nth() {
     assert_eq!(iter().nth(10), None);
 
     let mut iter = [1, 2, 3, 4, 5, 6].head_tail_pairs();
-    assert_eq!(iter.nth(2), Some((&3, slice(&[4, 5, 6]))));
-    assert_eq!(iter.next(), Some((&4, slice(&[5, 6]))));
+    assert_eq!(iter.nth(2), Some((&3, &[4, 5, 6] as &[_])));
+    assert_eq!(iter.next(), Some((&4, &[5, 6] as &[_])));
     assert_eq!(iter.nth(10), None);
     assert_eq!(iter.next(), None);
 }

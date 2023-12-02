@@ -4,7 +4,7 @@ authors = ["Pavel Grigorenko <grigorenkopv@ya.ru>"]
 
 description = "An iterator that repeatedly splits head & tail"
 
-version = "1.0.0"
+version = "1.0.1"
 edition = "2015"
 rust-version = "1.54"
 
